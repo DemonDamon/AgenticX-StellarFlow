@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Silk - 3D 手势动态壁纸</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="canvas-container"></div>
+  <div id="status">连接状态：未连接</div>
+  <button id="apply-master">设为主设备</button>
+
+  <!-- 引入依赖 -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+  <!-- 使用更新的 MediaPipe 版本 -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+  <!-- AgenticX 客户端（连接 Python 后端） -->
+  <script src="js/agenticx_client.js"></script>
+
+  <script src="js/shaders.js"></script>
+  <script src="js/sync.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/gesture.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

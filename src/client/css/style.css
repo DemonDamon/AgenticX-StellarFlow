@@ -1,0 +1,46 @@
+/* Liquid Silk 样式文件 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  background: #000;
+  font-family: Arial, sans-serif;
+}
+
+#canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#status {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: #fff;
+  font-size: 14px;
+  z-index: 100;
+}
+
+#apply-master {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 8px 16px;
+  background: #2196F3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+#apply-master:hover {
+  background: #1976D2;
+}
