@@ -1,4 +1,8 @@
-/* Liquid Silk 样式文件 */
+/**
+ * Stellar Flow 样式
+ * 深邃宇宙主题
+ */
+
 * {
   margin: 0;
   padding: 0;
@@ -7,8 +11,9 @@
 
 body {
   overflow: hidden;
-  background: #000;
-  font-family: Arial, sans-serif;
+  background: #000108;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: rgba(200, 220, 255, 0.9);
 }
 
 #canvas-container {
@@ -17,30 +22,204 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
+  z-index: 1;
 }
 
+/* 状态显示 - 更精致的设计 */
 #status {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
-  color: #fff;
-  font-size: 14px;
+  bottom: 24px;
+  left: 24px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
   z-index: 100;
+  background: rgba(10, 15, 40, 0.6);
+  border: 1px solid rgba(100, 150, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 24px rgba(0, 10, 40, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
 }
 
+#status:hover {
+  background: rgba(15, 25, 60, 0.7);
+  border-color: rgba(120, 170, 255, 0.25);
+}
+
+/* 主设备按钮 - 优雅的宇宙风格 */
 #apply-master {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 8px 16px;
-  background: #2196F3;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 24px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: rgba(220, 235, 255, 0.95);
+  background: linear-gradient(
+    135deg,
+    rgba(60, 100, 180, 0.5) 0%,
+    rgba(40, 70, 140, 0.5) 100%
+  );
+  border: 1px solid rgba(100, 150, 255, 0.2);
+  border-radius: 24px;
   cursor: pointer;
   z-index: 100;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 20px rgba(40, 80, 160, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #apply-master:hover {
-  background: #1976D2;
+  background: linear-gradient(
+    135deg,
+    rgba(80, 130, 220, 0.6) 0%,
+    rgba(60, 100, 180, 0.6) 100%
+  );
+  border-color: rgba(140, 180, 255, 0.35);
+  box-shadow: 
+    0 6px 28px rgba(60, 120, 200, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+#apply-master:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 12px rgba(40, 80, 160, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* 摄像头预览 - 由 JS 动态创建，这里提供覆盖样式 */
+#camera-preview {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  width: 180px !important;
+  height: 135px !important;
+  border: 1px solid rgba(100, 150, 255, 0.2) !important;
+  border-radius: 16px !important;
+  opacity: 0.65 !important;
+  z-index: 100 !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 20, 80, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+  transition: opacity 0.3s ease !important;
+}
+
+#camera-preview:hover {
+  opacity: 0.9 !important;
+}
+
+/* 手势提示叠加层 */
+.gesture-hint {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 40px;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: rgba(180, 210, 255, 0.8);
+  background: rgba(10, 20, 50, 0.4);
+  border: 1px solid rgba(100, 150, 255, 0.1);
+  border-radius: 30px;
+  backdrop-filter: blur(20px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 200;
+}
+
+.gesture-hint.visible {
+  opacity: 1;
+}
+
+/* 加载动画 */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000108;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.8s ease;
+}
+
+.loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 2px solid rgba(100, 150, 255, 0.1);
+  border-top-color: rgba(140, 180, 255, 0.6);
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 微妙的脉动动画 - 用于特殊元素 */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 
+      0 4px 20px rgba(60, 120, 200, 0.3),
+      0 0 40px rgba(80, 140, 220, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 4px 24px rgba(80, 140, 220, 0.4),
+      0 0 60px rgba(100, 160, 240, 0.15);
+  }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  #status {
+    bottom: 16px;
+    left: 16px;
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+  
+  #apply-master {
+    bottom: 16px;
+    right: 16px;
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+  
+  #camera-preview {
+    width: 140px !important;
+    height: 105px !important;
+    top: 12px !important;
+    right: 12px !important;
+  }
+}
+
+/* 深色模式优化（默认就是深色） */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #000108;
+  }
 }
